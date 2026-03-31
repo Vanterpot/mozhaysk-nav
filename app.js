@@ -27,11 +27,16 @@ async function loadData(direction) {
 
     try {
         const busFile = direction === 'forward' ? 'bus_29_forward.json' : 'bus_29_return.json';
+        // Формируем оригинальную ссылку на Яндекс
+        const yandexUrl = `https://api.rasp.yandex.net/v3.0/search/?apikey=${API_KEY}&format=json&from=${direction === 'forward' ? ST_RABOCHIY : ST_MOZHAYSK}&to=${direction === 'forward' ? ST_MOZHAYSK : ST_RABOCHIY}&date=${selectedDate}&transport_types=suburban`;
+        
+        // Оборачиваем её в надежный публичный CORS-прокси (AllOrigins)
+        const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(yandexUrl)}`;
+
         const [busRes, trainRes] = await Promise.all([
             fetch(busFile),
-            fetch(`https://api.rasp.yandex.net/v3.0/search/?apikey=${API_KEY}&format=json&from=${direction === 'forward' ? ST_RABOCHIY : ST_MOZHAYSK}&to=${direction === 'forward' ? ST_MOZHAYSK : ST_RABOCHIY}&date=${selectedDate}&transport_types=suburban`)
+            fetch(proxyUrl) // Запрашиваем данные через прокси
         ]);
-
         const buses = await busRes.json();
         const trainData = await trainRes.json();
         renderResults(direction, buses, trainData.segments);
