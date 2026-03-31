@@ -1,0 +1,9 @@
+[
+  { "departure_krasny_stan": "07:15", "arrival_mozhaysk": "07:51" },
+  { "departure_krasny_stan": "11:00", "arrival_mozhaysk": "11:36" },
+  { "departure_krasny_stan": "13:07", "arrival_mozhaysk": "13:43" },
+  { "departure_krasny_stan": "15:30", "arrival_mozhaysk": "16:05" },
+  { "departure_krasny_stan": "18:07", "arrival_mozhaysk": "18:43" },
+  { "departure_krasny_stan": "20:07", "arrival_mozhaysk": "20:43" },
+  { "departure_krasny_stan": "21:45", "arrival_mozhaysk": "22:22" }
+]
