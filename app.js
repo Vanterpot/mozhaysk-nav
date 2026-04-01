@@ -30,7 +30,7 @@ async function loadData(direction) {
         // Формируем оригинальную ссылку на Яндекс
         const yandexUrl = `https://api.rasp.yandex.net/v3.0/search/?apikey=${API_KEY}&format=json&from=${direction === 'forward' ? ST_RABOCHIY : ST_MOZHAYSK}&to=${direction === 'forward' ? ST_MOZHAYSK : ST_RABOCHIY}&date=${selectedDate}&transport_types=suburban`;
         
-        // Оборачиваем её в надежный публичный CORS-прокси (AllOrigins)
+        // Оборачиваем её в надежный публичный CORS-прокси (Yandex Cloud Functions)
         const proxyUrl = `https://functions.yandexcloud.net/d4etj6gnlf6ponpm8tou?url=${encodeURIComponent(yandexUrl)}`;
 
         const [busRes, trainRes] = await Promise.all([
