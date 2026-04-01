@@ -31,7 +31,7 @@ async function loadData(direction) {
         const yandexUrl = `https://api.rasp.yandex.net/v3.0/search/?apikey=${API_KEY}&format=json&from=${direction === 'forward' ? ST_RABOCHIY : ST_MOZHAYSK}&to=${direction === 'forward' ? ST_MOZHAYSK : ST_RABOCHIY}&date=${selectedDate}&transport_types=suburban`;
         
         // Оборачиваем её в надежный публичный CORS-прокси (AllOrigins)
-        const proxyUrl = `https://dry-frog-52d4.lorinforever.workers.dev/?url=${encodeURIComponent(yandexUrl)}`;
+        const proxyUrl = `https://functions.yandexcloud.net/d4ekdrubiflidp0a2ojg?url=${encodeURIComponent(yandexUrl)}`;
 
         const [busRes, trainRes] = await Promise.all([
             fetch(busFile),
