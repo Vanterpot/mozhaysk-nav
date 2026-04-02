@@ -61,7 +61,7 @@ button:active { transform: scale(0.97); }
 .results-container {
     max-width: 500px;
     margin: 20px auto;
-    padding: 0 15px 100px 15px;
+    padding: 0 15px 20px 15px;
 }
 
 .card {
@@ -117,3 +117,50 @@ button:active { transform: scale(0.97); }
     margin-bottom: 15px;
 }
 @keyframes loading { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+
+.welcome-msg {
+    text-align: center;
+    color: #6c757d;
+    font-size: 16px;
+    margin-top: 20px;
+    line-height: 1.5;
+}
+
+.app-footer {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 0 15px 100px 15px;
+    text-align: center;
+}
+
+.app-footer h4 {
+    margin-top: 10px;
+    margin-bottom: 15px;
+    color: #495057;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-btn {
+    display: inline-block;
+    padding: 12px;
+    background: #e9ecef;
+    color: #495057;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 14px;
+    transition: background 0.2s, transform 0.1s;
+}
+
+.footer-btn:hover {
+    background: #dee2e6;
+}
+
+.footer-btn:active {
+    transform: scale(0.98);
+}
