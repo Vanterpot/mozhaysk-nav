@@ -154,7 +154,15 @@ function renderResults(dir, buses, trains) {
 
 // 2. Универсальная кнопка "поделиться" / скачать
 document.getElementById('btn-share').addEventListener('click', () => {
-    html2canvas(document.getElementById('capture-area')).then(canvas => {
+    const btnShare = document.getElementById('btn-share');
+    btnShare.style.display = 'none'; // временно скрываем кнопку, чтобы её не было на скрине
+
+    html2canvas(document.body, {
+        y: window.scrollY,
+        x: window.scrollX,
+        width: document.documentElement.clientWidth,
+        height: window.innerHeight
+    }).then(canvas => {
         canvas.toBlob(blob => {
             const file = new File([blob], "schedule.png", { type: "image/png" });
             const shareData = { files: [file], title: 'Расписание' };
@@ -177,6 +185,10 @@ document.getElementById('btn-share').addEventListener('click', () => {
                 fallbackDownload(); // Если DuckDuckGo или десктоп
             }
         });
+    }).catch(err => {
+        console.error('Ошибка скриншота:', err);
+    }).finally(() => {
+        btnShare.style.display = ''; // возвращаем кнопку
     });
 });
 
